@@ -57,3 +57,6 @@ jobs:
           --version-label "ver-${{ github.sha }}" \
           --description "commit-sha-${{ github.sha }}"
           
+      - name: Deploy new ElasticBeanstalk Application Version
+        run: aws elasticbeanstalk update-environment --environment-name Flaskapp-env --version-label "ver-${{ github.sha }}"
+        
