@@ -55,8 +55,7 @@ jobs:
           --application-name FlaskApp \
           --source-bundle S3Bucket="flask-app-package-bucket",S3Key="deploy_package.zip" \
           --version-label "ver-${{ github.sha }}" \
-          --description "commit-sha-${{ github.sha }}"
+          --description "commit-sha-${{ github.sha }}" 2> /dev/null
           
       - name: Deploy new ElasticBeanstalk Application Version
         run: aws elasticbeanstalk update-environment --environment-name Flaskapp-env --version-label "ver-${{ github.sha }}"
-        
